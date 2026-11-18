@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#190b25">
+<title>Happy Princess Day, Meri Jaan ❤️</title>
+<style>
+*{box-sizing:border-box}
+:root{--pink:#ff77b7;--rose:#ffb6d5;--deep:#190b25}
+body{margin:0;min-height:100vh;overflow-x:hidden;color:#fff;font-family:Georgia,serif;
+background:radial-gradient(ellipse at 50% 15%,#5a2456 0%,#2b123b 42%,#100817 100%);}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.25;
+background-image:radial-gradient(#fff 1px,transparent 1px);background-size:34px 34px}
+main{position:relative;z-index:2;width:min(94%,720px);margin:auto;padding:34px 0 55px;text-align:center}
+.crown{font-size:40px;filter:drop-shadow(0 0 12px #ff8dc8);animation:bob 3s ease-in-out infinite}
+h1{font-size:clamp(2rem,8vw,3.5rem);line-height:1.1;margin:10px 0;color:#ffd3e7;text-shadow:0 0 18px #ff5aa8}
+.sub{font-size:1.15rem;color:#ffe8f2;margin:0 0 22px}
+.frame{position:relative;width:min(88vw,390px);height:min(112vw,500px);max-height:500px;margin:0 auto 24px;
+padding:9px;border:1px solid #ffc1df;border-radius:28px;background:linear-gradient(145deg,#ffd5e7,#a83b82,#f7a5d0);
+box-shadow:0 0 28px #ff63b477,0 18px 55px #0008;overflow:hidden}
+.frame img{width:100%;height:100%;object-fit:cover;border-radius:20px;display:block;opacity:1;transition:opacity .8s,transform 5s}
+.frame img.fade{opacity:0;transform:scale(1.035)}
+.caption{color:#ffd9e9;font-size:.95rem;margin-top:-12px;margin-bottom:22px}
+.message{margin:20px auto;padding:22px 18px;max-width:590px;border:1px solid #ffadd2aa;border-radius:24px;
+background:linear-gradient(135deg,#ffffff15,#ff9bc51c);box-shadow:inset 0 0 24px #ff8ec51c,0 10px 35px #0004;backdrop-filter:blur(8px)}
+.message h2{color:#ffc4df;font-size:clamp(1.5rem,6vw,2.15rem);margin:0 0 12px}
+.message p{font-size:clamp(1.08rem,4vw,1.35rem);line-height:1.7;margin:8px 0;color:#fff1f7}
+.love{font-size:1.55rem;color:#ffb9d8!important;text-shadow:0 0 14px #ff5da9}
+button{border:0;border-radius:999px;padding:14px 25px;font-size:1rem;font-weight:bold;color:#5c1741;
+background:linear-gradient(120deg,#ffe2ef,#ff8fc3);box-shadow:0 5px 24px #ff68ad66;cursor:pointer}
+.note{font:13px Arial,sans-serif;color:#f4c8dc;margin-top:13px}
+.heart{position:fixed;z-index:1;bottom:-70px;left:var(--x);font-size:var(--s);opacity:0;
+animation:floatUp var(--d) linear infinite;animation-delay:var(--delay);filter:drop-shadow(0 0 9px #ff62ac)}
+.heart3d{position:fixed;z-index:1;top:var(--top);left:var(--left);font-size:var(--size);
+animation:spinFloat var(--speed) ease-in-out infinite;filter:drop-shadow(0 8px 10px #ff5eaa88)}
+@keyframes floatUp{0%{transform:translate3d(0,0,0) rotate(0) scale(.7);opacity:0}
+12%{opacity:.9}100%{transform:translate3d(var(--drift),-115vh,0) rotate(360deg) scale(1.25);opacity:0}}
+@keyframes spinFloat{0%,100%{transform:translateY(0) rotateY(0) rotateZ(-12deg)}
+50%{transform:translateY(-28px) rotateY(180deg) rotateZ(12deg)}}
+@keyframes bob{50%{transform:translateY(-9px) rotate(5deg)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="heart3d" style="--top:12%;--left:7%;--size:42px;--speed:5s">💗</div>
+<div class="heart3d" style="--top:22%;--left:85%;--size:35px;--speed:6s">💖</div>
+<div class="heart3d" style="--top:68%;--left:5%;--size:30px;--speed:4.5s">💕</div>
+<div class="heart3d" style="--top:73%;--left:88%;--size:45px;--speed:5.5s">❤️</div>
+
+<main>
+  <div class="crown">👑</div>
+  <h1>Happy Princess Day</h1>
+  <p class="sub">Meri pyaari princess 💗</p>
+
+  <div class="frame"><img id="slideshow" src="photos/photo1.jpg" alt="A special memory"></div>
+  <div class="caption">A few beautiful moments of you ✨</div>
+
+  <section class="message">
+    <h2>Meri Jaan ❤️</h2>
+    <p>Tum hamesha mere saath hi raho.</p>
+    <p class="love">I Love You Bachaa 🥹💞</p>
+    <p>Happy Princess Day, meri jaan. Tum mere liye bahut special ho. 👑</p>
+    <p>Hamesha khush rehna, meri princess. 💗</p>
+  </section>
+
+  <button id="musicBtn">▶ Play our song 🎵</button>
+  <div class="note">Music play karne ke liye button dabana hoga.</div>
+  <audio id="song" preload="auto" loop>
+    <source src="song.m4a" type="audio/mp4">
+  </audio>
+</main>
+<script>
+const photos = ["photos/photo1.jpg","photos/photo2.jpg","photos/photo3.jpg","photos/photo4.jpg","photos/photo5.jpg"];
+const slide = document.getElementById("slideshow");
+let index = 0;
+setInterval(() => {
+  slide.classList.add("fade");
+  setTimeout(() => {
+    index = (index + 1) % photos.length;
+    slide.src = photos[index];
+    slide.onload = () => slide.classList.remove("fade");
+  }, 650);
+}, 3500);
+
+const song = document.getElementById("song");
+const musicBtn = document.getElementById("musicBtn");
+musicBtn.addEventListener("click", async () => {
+  if (song.paused) {
+    try { await song.play(); musicBtn.textContent = "❚❚ Pause song 🎵"; }
+    catch(e) { musicBtn.textContent = "Tap again to play 🎵"; }
+  } else {
+    song.pause(); musicBtn.textContent = "▶ Play our song 🎵";
+  }
+});
+const emojis = ["💗","💖","💕","❤️","💘"];
+for(let i=0;i<22;i++){
+  const h=document.createElement("div");
+  h.className="heart";
+  h.textContent=emojis[i%emojis.length];
+  h.style.setProperty("--x",Math.random()*100+"vw");
+  h.style.setProperty("--s",(17+Math.random()*25)+"px");
+  h.style.setProperty("--d",(9+Math.random()*10)+"s");
+  h.style.setProperty("--delay",(-Math.random()*18)+"s");
+  h.style.setProperty("--drift",(-70+Math.random()*140)+"px");
+  document.body.appendChild(h);
+}
+</script>
+</body>
+</html>
